@@ -17,10 +17,8 @@ lz = next(iter(lista_zakupow.keys()))
 lzz = next(iter(lista_zakupow.keys()))
 lz2 = next(iter(lista_zakupow.values()))
 lz22 = next(iter(lista_zakupow.values()))
-
 print('Poszedłem do sklepu typu',lz.capitalize(),'i kupiłem sobie przedmiot typu:',[item.capitalize() for item in lz2])
 print('Poszedłem do sklepu typu',lz.capitalize(),'i kupiłem sobie przedmiot typu:',[item.capitalize() for item in lz2])
-
 print()
 print('-- Zadanie 2 Rozwiazanie 1 --')
 print()
