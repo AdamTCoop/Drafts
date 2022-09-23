@@ -35,3 +35,5 @@ for z in piatki:
     piatki3.append(z * z * z)
 print()
 print(piatki3)
+print()
+print('Edycja pod nowy branch')
