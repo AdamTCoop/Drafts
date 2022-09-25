@@ -1,46 +1,3 @@
-
-panowie = ['Bednarz - Adam','Bednarz - Leszek','Ciba - Tomasz','Ciba - Dariusz']
-auta93 = ['13','45','21','NA','89']
-auta94 = ['45','23','NA','87','54']
-auta95 = ['23','NA','88','54','12']
-
-auta_all = zip(panowie,auta93,auta94,auta95)
-sprzedawcy = {}
-
-for i in (auta_all):
-    nazwisko,imie = i[0].split(' - ')
-    nazwiska = sprzedawcy.setdefault(nazwisko,{})
-    imiona = nazwiska.setdefault(imie,{})
-    imiona["Sprzedaż"] = {
-        '93': 0 if i[1] == "NA" else int(i[1].replace(',',"")),
-        '94': 0 if i[2] == "NA" else int(i[2].replace(',',"")),
-        '95': 0 if i[3] == "NA" else int(i[3].replace(',',""))
-    }
-print(nazwiska)
-print(sprzedawcy)
-
-print(sprzedawcy.items())
-
-# for i in zip(panowie,auta93,auta94,auta95)
-
-
-"""
-answer1 = "" # wskaż nazwę modelu jako string
-answer2 = "" # wskaż producenta jako string
-answer3 = [] # wskaż odpowiedź jako listę zawierającą wszystkie modele spełniające kryteria
-answer4 = "" # wskaż nazwę modelu jako string
-answer5 = "" # odpowiedź podaj w formacie procentowym jako string. Np. '21%'
-
-cars = {}
-
-for i in zip(models,sales2018,sales2017,sales2016):
-  brand,model = i[0].split(" - ")
-  brand_models = cars.setdefault(brand,{})
-  brand_model_sales = brand_models.setdefault(model,{})
-  brand_model_sales["sales"] = {"2016": 0 if i[3] == "NA" else int(i[3].replace(',',"")),
-                                "2017": 0 if i[2] == "NA" else int(i[2].replace(',',"")),
-                                "2018": 0 if i[1] == "NA" else int(i[1].replace(',',""))}
-
 models = ['Volkswagen - Golf','Renault - Clio','Volkswagen - Polo',
 'Ford - Fiesta','Nissan - Qashqai','Peugeot - 208','VW - Tiguan','Skoda - Octavia',
 'Toyota - Yaris','Opel - Corsa','Dacia - Sandero','Renault - Captur','Citroen - C3',
@@ -61,7 +18,7 @@ sales2016 = ['492,952','315,115','308,561','300,528','234,340','249,047','180,19
 '230,255','193,969','264,844','170,300','217,105','134,560','NA','214,435',
 '183,730','NA','NA','177,301','191,617','253,483','208,575','NA','195,653','NA']
 
-answer1 = "" # wskaż nazwę modelu jako string
+# wskaż nazwę modelu jako string
 answer2 = "" # wskaż producenta jako string
 answer3 = [] # wskaż odpowiedź jako listę zawierającą wszystkie modele spełniające kryteria
 answer4 = "" # wskaż nazwę modelu jako string
@@ -70,6 +27,7 @@ answer5 = "" # odpowiedź podaj w formacie procentowym jako string. Np. '21%'
 cars = {}
 
 for i in zip(models,sales2018,sales2017,sales2016):
+
   brand,model = i[0].split(" - ")
   brand_models = cars.setdefault(brand,{})
   brand_model_sales = brand_models.setdefault(model,{})
@@ -77,7 +35,74 @@ for i in zip(models,sales2018,sales2017,sales2016):
                                 "2017": 0 if i[2] == "NA" else int(i[2].replace(',',"")),
                                 "2018": 0 if i[1] == "NA" else int(i[1].replace(',',""))}
 
-sales2018up = (zip(models,sales2018))
-sales2017up = (zip(models,sales2017))
-sales2016up = (zip(models,sales2016))
+print(cars.items())
+
+top_2017_sales = ("",0)
+for brand in cars.keys():
+    for model in cars[brand].keys():
+        sales = cars[brand][model]['sales']['2017']
+    if sales > top_2017_sales[1]:
+        top_2017_sales = (model,sales)
+answer1 = top_2017_sales[0]
+print('\nAnswer1, czyli który model sprzedawał się najlepiej w 2017:',answer1)
+
+top_2018_brand = ("",0)
+for brand in cars.keys():
+    brand_sales = 0
+for model in cars[brand].keys():
+    model_sales = cars[brand][model]['sales']['2018']
+    brand_sales += model_sales
+if brand_sales > top_2018_brand[1]:
+    top_2018_brand = (brand,brand_sales)
+answer2 = top_2018_brand[0]
+print('\nAnswer2, czyli która marka sprzedawała się najlepiej w 2018:',answer2)
+
+
+for brand in cars.keys():
+  for model in cars[brand].keys():
+    sales = cars[brand][model]['sales']
+    if sales['2016'] == 0 and sales['2017'] > 0:
+      answer3.append(model)
+print('\nAnswer3, czyli których modeli nie było w 2016 a pojawiły się w 2017:',answer3)
+
+"""
+
+answer1 = '" '# wskaż nazwę modelu jako string
+answer2 = "" # wskaż producenta jako string
+answer3 = [] # wskaż odpowiedź jako listę zawierającą wszystkie modele spełniające kryteria
+answer4 = "" # wskaż nazwę modelu jako string
+answer5 = "" # odpowiedź podaj w formacie procentowym jako string. Np. '21%'
+
+
+
+
+panowie = ['Bednarz - Adam','Bednarz - Leszek','Ciba - Tomasz','Ciba - Dariusz']
+auta93 = ['13','45','21','NA','89']
+auta94 = ['45','23','NA','87','54']
+auta95 = ['23','NA','88','54','12']
+
+auta_all = zip(panowie,auta93,auta94,auta95)
+sprzedawcy = {}
+
+for i in (auta_all):
+    nazwisko,imie = i[0].split(' - ')
+    nazwiska = sprzedawcy.setdefault(nazwisko,{})
+    imiona = nazwiska.setdefault(imie,{})
+    imiona["Sprzedaż"] = {
+        '93': 0 if i[1] == "NA" else int(i[1].replace(',',"")),
+        '94': 0 if i[2] == "NA" else int(i[2].replace(',',"")),
+        '95': 0 if i[3] == "NA" else int(i[3].replace(',',""))
+    }
+
+print(sprzedawcy[nazwiska].keys)
+
+top_1993_sales = ("",0)
+for nazwiska in sprzedawcy.keys():
+    for imiona in sprzedawcy[nazwiska].keys():
+        sprzedaz = sprzedawcy[nazwiska][imiona]['Sprzedaż']['93']
+        if sprzedaz > top_1993_sales[1]:
+            top_1993_sales = (imiona,sprzedaz)
+
+print('answer1 = ',top_1993_sales[0])
+
 """
