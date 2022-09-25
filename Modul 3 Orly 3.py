@@ -1,3 +1,46 @@
+
+panowie = ['Bednarz - Adam','Bednarz - Leszek','Ciba - Tomasz','Ciba - Dariusz']
+auta93 = ['13','45','21','NA','89']
+auta94 = ['45','23','NA','87','54']
+auta95 = ['23','NA','88','54','12']
+
+auta_all = zip(panowie,auta93,auta94,auta95)
+sprzedawcy = {}
+
+for i in (auta_all):
+    nazwisko,imie = i[0].split(' - ')
+    nazwiska = sprzedawcy.setdefault(nazwisko,{})
+    imiona = nazwiska.setdefault(imie,{})
+    imiona["Sprzedaż"] = {
+        '93': 0 if i[1] == "NA" else int(i[1].replace(',',"")),
+        '94': 0 if i[2] == "NA" else int(i[2].replace(',',"")),
+        '95': 0 if i[3] == "NA" else int(i[3].replace(',',""))
+    }
+print(nazwiska)
+print(sprzedawcy)
+
+print(sprzedawcy.items())
+
+# for i in zip(panowie,auta93,auta94,auta95)
+
+
+"""
+answer1 = "" # wskaż nazwę modelu jako string
+answer2 = "" # wskaż producenta jako string
+answer3 = [] # wskaż odpowiedź jako listę zawierającą wszystkie modele spełniające kryteria
+answer4 = "" # wskaż nazwę modelu jako string
+answer5 = "" # odpowiedź podaj w formacie procentowym jako string. Np. '21%'
+
+cars = {}
+
+for i in zip(models,sales2018,sales2017,sales2016):
+  brand,model = i[0].split(" - ")
+  brand_models = cars.setdefault(brand,{})
+  brand_model_sales = brand_models.setdefault(model,{})
+  brand_model_sales["sales"] = {"2016": 0 if i[3] == "NA" else int(i[3].replace(',',"")),
+                                "2017": 0 if i[2] == "NA" else int(i[2].replace(',',"")),
+                                "2018": 0 if i[1] == "NA" else int(i[1].replace(',',""))}
+
 models = ['Volkswagen - Golf','Renault - Clio','Volkswagen - Polo',
 'Ford - Fiesta','Nissan - Qashqai','Peugeot - 208','VW - Tiguan','Skoda - Octavia',
 'Toyota - Yaris','Opel - Corsa','Dacia - Sandero','Renault - Captur','Citroen - C3',
@@ -26,10 +69,6 @@ answer5 = "" # odpowiedź podaj w formacie procentowym jako string. Np. '21%'
 
 cars = {}
 
-sales2018up = (zip(models,sales2018))
-sales2017up = (zip(models,sales2017))
-sales2016up = (zip(models,sales2016))
-
 for i in zip(models,sales2018,sales2017,sales2016):
   brand,model = i[0].split(" - ")
   brand_models = cars.setdefault(brand,{})
@@ -37,3 +76,8 @@ for i in zip(models,sales2018,sales2017,sales2016):
   brand_model_sales["sales"] = {"2016": 0 if i[3] == "NA" else int(i[3].replace(',',"")),
                                 "2017": 0 if i[2] == "NA" else int(i[2].replace(',',"")),
                                 "2018": 0 if i[1] == "NA" else int(i[1].replace(',',""))}
+
+sales2018up = (zip(models,sales2018))
+sales2017up = (zip(models,sales2017))
+sales2016up = (zip(models,sales2016))
+"""
