@@ -1,3 +1,4 @@
+
 models = ['Volkswagen - Golf','Renault - Clio','Volkswagen - Polo',
 'Ford - Fiesta','Nissan - Qashqai','Peugeot - 208','VW - Tiguan','Skoda - Octavia',
 'Toyota - Yaris','Opel - Corsa','Dacia - Sandero','Renault - Captur','Citroen - C3',
@@ -35,7 +36,16 @@ for i in zip(models,sales2018,sales2017,sales2016):
                                 "2017": 0 if i[2] == "NA" else int(i[2].replace(',',"")),
                                 "2018": 0 if i[1] == "NA" else int(i[1].replace(',',""))}
 
-print(cars.items())
+##ZAPOŻYCZONE Z YOUTUBE:
+def dict_walk(d):
+    for k, v in d.items():
+        if type(v)==dict:
+            print(k)
+            dict_walk(v)
+        else:
+            print(k, ':', v)
+
+dict_walk(cars )
 
 top_2017_sales = ("",0)
 for brand in cars.keys():
@@ -57,7 +67,6 @@ if brand_sales > top_2018_brand[1]:
 answer2 = top_2018_brand[0]
 print('\nAnswer2, czyli która marka sprzedawała się najlepiej w 2018:',answer2)
 
-
 for brand in cars.keys():
   for model in cars[brand].keys():
     sales = cars[brand][model]['sales']
@@ -65,7 +74,23 @@ for brand in cars.keys():
       answer3.append(model)
 print('\nAnswer3, czyli których modeli nie było w 2016 a pojawiły się w 2017:',answer3)
 
-"""
+
+min_model_sales = ("",100000000000000)
+for brand in cars.keys():
+  for model in cars[brand].keys():
+    model_sales = sum(cars[brand][model]['sales'].values())
+    if model_sales < min_model_sales[1]:
+      min_model_sales = (model,model_sales)
+answer4 = min_model_sales[0]
+print('\nAnswer4, czyli który model sprzedawał się najgorzej ze wszystkich latach:',answer4)
+
+sales17 = 0
+sales18 = 0
+for sales in cars['Ford'].values():
+  sales17 += sales['sales']['2017']
+  sales18 += sales['sales']['2018']
+answer5 = "{0:.0%}".format(sales18 / sales17 - 1)
+print('\nAnswer5, czyli wzrost sprzedaży Forda w latach 2017 - 2018:',answer5)
 
 answer1 = '" '# wskaż nazwę modelu jako string
 answer2 = "" # wskaż producenta jako string
@@ -76,10 +101,13 @@ answer5 = "" # odpowiedź podaj w formacie procentowym jako string. Np. '21%'
 
 
 
+
+"""
+
 panowie = ['Bednarz - Adam','Bednarz - Leszek','Ciba - Tomasz','Ciba - Dariusz']
-auta93 = ['13','45','21','NA','89']
-auta94 = ['45','23','NA','87','54']
-auta95 = ['23','NA','88','54','12']
+auta93 = ['13','45','21','NA']
+auta94 = ['45','23','NA','87']
+auta95 = ['23','NA','88','54']
 
 auta_all = zip(panowie,auta93,auta94,auta95)
 sprzedawcy = {}
@@ -94,7 +122,6 @@ for i in (auta_all):
         '95': 0 if i[3] == "NA" else int(i[3].replace(',',""))
     }
 
-print(sprzedawcy[nazwiska].keys)
 
 top_1993_sales = ("",0)
 for nazwiska in sprzedawcy.keys():
@@ -103,6 +130,13 @@ for nazwiska in sprzedawcy.keys():
         if sprzedaz > top_1993_sales[1]:
             top_1993_sales = (imiona,sprzedaz)
 
-print('answer1 = ',top_1993_sales[0])
+print(sprzedawcy)
+
+
+test = ('Adam - Bednarz')
+print(test)
+imie,nazwisko = test.split(' - ')
+print(imie)
+print(nazwisko)
 
 """
