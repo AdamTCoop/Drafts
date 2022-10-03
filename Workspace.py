@@ -37,6 +37,9 @@ if __name__ == "__main__":
         except ValueError:
             print('Możesz wprowadzić tylko wartości liczbowe od 1 do 6. Spróbuj jeszcze raz.')
             continue
+        if n < 0 or n > 6:
+            print('Możesz wprowadzić tylko wartości liczbowe od 1 do 6. Spróbuj jeszcze raz.')
+            continue
         else:
             break
     print('Zdecydowałeś się na:',n)
