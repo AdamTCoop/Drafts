@@ -1,5 +1,5 @@
 import logging
-logging.basicConfig(level=logging.DEBUG, format='%(asctime)s %(message)i', filename="logfile.log")
+logging.basicConfig(level=logging.DEBUG, format='%(asctime)s %(message)s', filename="logfile.log")
 def licz(x1,*args):
     if n == 6:
         return x1 * x1
@@ -19,6 +19,7 @@ def licz(x1,*args):
 if __name__ == "__main__":
     print()
     print("Kalkulator")
+    logging.info("Kalkulator")
     print()
     print('Niniejszy kod umożliwia dokonanie arcytrudnych obliczeń przy użyciu jednego z dostępnych działań.')
     print('Wskaż rodzaj działania które chcesz przeprowadzić, posługując się wskazanym numerem działania:')
@@ -38,7 +39,8 @@ if __name__ == "__main__":
             continue
         else:
             break
-    print('Zdecydowałeś się na:', n)
+    print('Zdecydowałeś się na:',n)
+    logging.info('Zdecydowałeś się na: %s' %n)
     wynik = 0
     if n >= 5:
         print('Wskaż liczbę do obliczenia. Wybór potwierdź klawiszem enter: ', end=' ')
@@ -51,6 +53,7 @@ if __name__ == "__main__":
             else:
                 break
         print('Wskazales liczbe:', x1)
+        logging.info('Wskazales liczbe:' %n)
         print()
         print('Wynik działania wynosi: ', licz(x1))
         wynik = (licz(x1))
@@ -65,6 +68,7 @@ if __name__ == "__main__":
             else:
                 break
         print('Wskazales liczbe:', x1,' Liczba numer dwa, to:')
+        logging.info('Wskazales liczbe:%s Liczba numer dwa, to:' %x1)
         while True:
             try:
                 x2 = float(input())
