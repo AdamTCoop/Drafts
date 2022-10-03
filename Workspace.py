@@ -1,7 +1,11 @@
 import logging
-logging.basicConfig(level=logging.DEBUG, format='%(asctime)s %(message)s', filename="logfile.log")
-
-def licz14(x1,x2):
+logging.basicConfig(level=logging.DEBUG, format='%(asctime)s %(message)i', filename="logfile.log")
+def licz(x1,*args):
+    if n == 6:
+        return x1 * x1
+    elif n == 5:
+        import math
+        return math.sqrt(x1)
     if n == 4:
         return x1 / x2
     elif n == 3:
@@ -12,18 +16,9 @@ def licz14(x1,x2):
         return x1 + x2
     else:
         return print("Coś poszło nie tak.")
-def licz56(x1):
-    if n == 6:
-        return x1 * x1
-    elif n == 5:
-        import math
-        return math.sqrt(x1)
-        return print("Coś poszło nie tak.")
-
 if __name__ == "__main__":
     print()
     print("Kalkulator")
-    logging.info("Kalkulator")
     print()
     print('Niniejszy kod umożliwia dokonanie arcytrudnych obliczeń przy użyciu jednego z dostępnych działań.')
     print('Wskaż rodzaj działania które chcesz przeprowadzić, posługując się wskazanym numerem działania:')
@@ -57,8 +52,8 @@ if __name__ == "__main__":
                 break
         print('Wskazales liczbe:', x1)
         print()
-        print('Wynik działania wynosi: ', licz56(x1))
-        wynik = (licz56(x1))
+        print('Wynik działania wynosi: ', licz(x1))
+        wynik = (licz(x1))
     else:
         print('Wskaż dwie liczby do obliczeń. Wprowadź pierwszą liczbę i potwierdź klawiszem enter: ', end = ' ')
         while True:
@@ -80,7 +75,6 @@ if __name__ == "__main__":
                 break
         print('Wskazales liczby',x1,' i ',x2)
         print()
-        print('Wynik działania wynosi: ', licz14(x1,x2))
-        wynik = licz14(x1,x2)
-
+        print('Wynik działania wynosi: ', licz(x1,x2))
+        wynik = licz(x1,x2)
     print('W zaokragleniu: ',(round(wynik,2)))
