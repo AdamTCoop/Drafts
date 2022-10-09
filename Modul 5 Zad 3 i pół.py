@@ -1,0 +1,84 @@
+from faker import Faker
+fake = Faker()
+
+class BaseContact:
+    def __init__ (self, first_name, last_name, phone, email):
+        self.first_name = first_name
+        self.last_name = last_name
+        self.phone = phone
+        self.email = email
+    @property
+    def contact(self):
+        print('Imie:',self.first_name, 'Nazwisko:', self.last_name, 'Numer telefonu:',self.phone, end = ' ')
+    @property
+    def label_length(self):
+        wynik = len(self.first_name) + len(self.last_name)
+        print('[Ilosc znakow:',wynik,']')
+
+class BusinessContact(BaseContact):
+   def __init__(self, position, company_name, company_number , *args, **kwargs):
+       super().__init__(*args, **kwargs)
+       self.position = position
+       self.company_name = company_name
+       self.company_number = company_number
+   @property
+   def contact(self):
+       print('Wybieram numer +48', self.company_number, 'i dzwonię do', self.first_name, self.last_name, end=' ')
+   @property
+   def label_length(self):
+       wynik = len(self.first_name) + len(self.last_name)
+       print('[Ilosc znakow:', wynik, ']')
+
+Lp1 = BaseContact(first_name = fake.first_name(),last_name = fake.last_name(),phone = fake.phone_number(),email = fake.email)
+Lp2 = BaseContact(first_name = fake.first_name(),last_name = fake.last_name(),phone = fake.phone_number(),email = fake.email)
+Lp3 = BaseContact(first_name = fake.first_name(),last_name = fake.last_name(),phone = fake.phone_number(),email = fake.email)
+Lp4 = BaseContact(first_name = fake.first_name(),last_name = fake.last_name(),phone = fake.phone_number(),email = fake.email)
+Lp5 = BusinessContact(first_name = fake.first_name(),last_name = fake.last_name(),phone = fake.phone_number(),email = fake.email(),position = 'President',company_name = 'Żabka',company_number = fake.phone_number())
+Lp6 = BusinessContact(first_name = fake.first_name(),last_name = fake.last_name(),phone = fake.phone_number(),email = fake.email(),position = 'President',company_name = 'Żabka',company_number = fake.phone_number())
+Lp7 = BusinessContact(first_name = fake.first_name(),last_name = fake.last_name(),phone = fake.phone_number(),email = fake.email(),position = 'President',company_name = 'Żabka',company_number = fake.phone_number())
+Lp8 = BusinessContact(first_name = fake.first_name(),last_name = fake.last_name(),phone = fake.phone_number(),email = fake.email(),position = 'President',company_name = 'Żabka',company_number = fake.phone_number())
+"""
+kontakty = (Lp1,Lp2,Lp3,Lp4,Lp5,Lp6,Lp7,Lp8)
+print()
+for x in kontakty:
+    x.contact, x.label_length
+print()
+"""
+def create_contacts(num, card_type):
+    cards = []
+    for i in range(num):
+        if card_type == 1:
+            cards.append(BaseContact(first_name = fake.first_name(),last_name = fake.last_name(),phone = fake.phone_number(),email = fake.email))
+        if card_type == 2:
+            cards.append(BusinessContact(first_name = fake.first_name(),last_name = fake.last_name(),phone = fake.phone_number(),email = fake.email(),position = 'President',company_name = 'Żabka',company_number = fake.phone_number()))
+    return cards
+
+#cards = create_contacts(5,2)
+#for x in cards:
+#    x.contact, x.label_length
+
+def day1k():
+    lista1000 = create_contacts(1000,1)
+    for x in lista1000:
+        x.contact, x.label_length
+
+
+from datetime import datetime
+import time
+
+def decorator(func):
+    def wrapper():
+        now1 = datetime.now()
+        print('Czas rozpoczecia:', now1)
+        time.sleep(2)
+        func()
+        time.sleep(2)
+        now2 = datetime.now()
+        print('Czas zakonczenia:',now2)
+        czas = now2 - now1
+        time.sleep(1)
+        print('Dlugosc procesu:',czas)
+    return wrapper()
+
+go = decorator(day1k)
+go
