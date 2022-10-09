@@ -1,4 +1,8 @@
 import time
+import random
+
+print(seed([x]))
+
 class Movies:
     def __init__(self, title, year, type, lenght):
         self.title = title
@@ -12,9 +16,6 @@ class Movies:
     def play(self):
         print('Ogladasz wlasnie: %s z roku %s. Dotychczas ten film obejrzano %s razy.' % (self.title,self.year,self.views))
         self.views += 1
-    def show(self):
-        print('Tytuł filmu: %s, Rok produkcji: %s, Dotychczas obejrzano %s razy.' % (self.title, self.year,self.views))
-
 class Series(Movies):
    def __init__(self, ep_number, se_number, *args, **kwargs):
        super().__init__(*args, **kwargs)
@@ -25,9 +26,6 @@ class Series(Movies):
    def play(self):
        print('Ogladasz wlasnie: %s z roku %s S%sE%s. Dotychczas ten odcinek obejrzano %i razy.' % (self.title,self.year,self.se_number,self.ep_number,self.views))
        self.views += 1
-
-   def show(self):
-       print('Tytuł filmu: %s, Rok produkcji: %s, Sezon %s Odcinek %s. Odcinek obejrzano dotychczas %s razy.' % (self.title, self.year, self.se_number, self.ep_number,self.views))
 
 Lista = [
 Movies(title = 'Tie Me Up! Tie Me Down!', year = '1990',type = 'Comedy',lenght='M'),
@@ -88,7 +86,7 @@ def get_series():
     time.sleep(2)
     print('Wczytywanie zakończone.')
     time.sleep(2)
-    print('W bibliotece dostepne sa nastepujace pozycje:')
+    print('W bibliotece dostepne sa nastepujace pozycje:\n')
     time.sleep(2)
     for x in Lista:
         try:
@@ -101,7 +99,7 @@ def get_movies():
     time.sleep(2)
     print('Wczytywanie zakończone.')
     time.sleep(2)
-    print('W bibliotece dostepne sa nastepujace pozycje:')
+    print('W bibliotece dostepne sa nastepujace pozycje:\n')
     time.sleep(2)
     for x in Lista:
         if x.lenght == 'M':
@@ -112,22 +110,40 @@ def search(value):
            print(x.title,x.year)
            break
 
-search('The Office')
+
+
+
+
+
+
+
+
 
 """
-import time
 time.sleep(1)
-print('Wczytywanie modułu.. 1/3')
+print('|. Wczytywanie modułu.. 1/3...........|')
 time.sleep(2)
-print('Wczytywanie modułu.. 2/3')
+print('|. Wczytywanie modułu.. 2/3...........|')
 time.sleep(2)
-print('Wczytywanie modułu.. 3/3')
+print('|. Wczytywanie modułu.. 3/3...........|')
 time.sleep(2)
-print("Moduł wczytano: Biblioteka filmów \nVAULT TEC Inc \nRok dystrybucji 2152")
-
+print("|. Moduł wczytano: Biblioteka filmów..| \nVAULT TEC Inc \nRok dystrybucji 2152")
 time.sleep(1)
 print()
-#Lista[1].play()
-#Lista[40].play()
-
+print(
+'______ Dostępne opcje:__________________\n',
+'|. 1. Pobranie bazy filmów - get_movies()\n',
+'|. 2. Pobranie bazy seriali - get_series()\n',
+'|. 3. Wyszukanie po tytule filmu - search()\n',
+'|. 4. Uruchomienie filmu - .play()\n')
+n = int(input('Co byś chciał zrobić? Wybierz numer działania.\n'))
+if n == 1:
+    get_movies()
+elif n == 2:
+    get_series()
+elif n == 3:
+    tajtel = input('|. Podaj tytul filmu jaki chcesz znalezc.')
+    search(tajtel)
+    time.sleep(1)
+    odp = input('|. Czy chcesz obejrzec film? Tak/Nie')
 """
