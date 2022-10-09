@@ -1,5 +1,3 @@
-import time
-
 class Movies:
     def __init__(self, title, year, type, lenght):
         self.title = title
@@ -7,7 +5,6 @@ class Movies:
         self.type = type
         self.lenght = lenght
         self.views = 0
-
     def __str__(self):
         return f'{self.title} {self.year} {self.type}'
     def play(self):
@@ -21,14 +18,11 @@ class Series(Movies):
        self.ep_number = ep_number
        self.se_number = se_number
        self.views = 0
-
    def play(self):
        print('Ogladasz wlasnie: %s z roku %s S%sE%s. Dotychczas ten odcinek obejrzano %i razy.' % (self.title,self.year,self.se_number,self.ep_number,self.views))
        self.views += 1
    def show(self):
        print('Wylosowano film: %s z roku %s. Dotychczas ten film obejrzano %s razy.' % (self.title,self.year,self.views))
-
-
 Lista = [
 Movies(title = 'Tie Me Up! Tie Me Down!', year = '1990',type = 'Comedy',lenght='M'),
 Movies(title = 'High Heels', year = '1991',type = 'Comedy',lenght='M'),
@@ -81,6 +75,8 @@ Series(title = 'The Office', year = '2010',type = 'Comedy',se_number = '03', ep_
 Series(title = 'The Office', year = '2010',type = 'Comedy',se_number = '03', ep_number = '02',lenght='S'),
 Series(title = 'The Office', year = '2010',type = 'Comedy',se_number = '03', ep_number = '03',lenght='S'),
 ]
+import time
+import random
 
 def get_series():
     time.sleep(1)
@@ -112,7 +108,6 @@ def search(value):
            print(x.title,x.year)
            break
 
-import random
 def generate_views():
     x = random.randrange(10)
     Lista[x].views = random.randrange(1,100)
@@ -128,8 +123,6 @@ def top_views():
         if top_view < Lista[x].views:
             top_view = Lista[x].views
 
-top_views()
-"""
 time.sleep(1)
 print('|. Wczytywanie modułu.. 1/3...........|')
 time.sleep(2)
@@ -141,19 +134,21 @@ print("|. Moduł wczytano: Biblioteka filmów..| \nVAULT TEC Inc \nRok dystrybuc
 time.sleep(1)
 print()
 print(
-'______ Dostępne opcje:__________________\n',
-'|. 1. Pobranie bazy filmów - get_movies()\n',
-'|. 2. Pobranie bazy seriali - get_series()\n',
-'|. 3. Wyszukanie po tytule filmu - search()\n',
-'|. 4. Uruchomienie filmu - .play()\n')
-n = int(input('Co byś chciał zrobić? Wybierz numer działania.\n'))
+    ' ______ Dostępne funkcje programu_________\n',
+    '|. 1. Pobranie bazy filmów - get_movies()\n',
+    '|. 2. Pobranie bazy seriali - get_series()\n',
+    '|. 3. Wyszukanie po tytule filmu - search()\n',
+    '|. 4. Wylosowanie 1 tytulu z losową ogladalnoscią - generate_views()\n',
+    '|. 5. Wylosowanie 10 tytulow z losową ogladalnoscią filmu - generate_views10()\n'
+    ' |. 6. Wskazanie tytulu z najwyzsza ogladalnoscia - top_views()\n')
+n = int(input())
 if n == 1:
     get_movies()
 elif n == 2:
     get_series()
 elif n == 3:
-    tajtel = input('|. Podaj tytul filmu jaki chcesz znalezc.')
-    search(tajtel)
-    time.sleep(1)
-    odp = input('|. Czy chcesz obejrzec film? Tak/Nie')
-"""
+    search(input())
+elif n == 4:
+    generate_views()
+elif n == 5:
+    generate_views10()
