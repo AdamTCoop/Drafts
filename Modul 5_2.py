@@ -23,7 +23,7 @@ class BusinessContact(BaseContact):
        self.company_number = company_number
    @property
    def contact(self):
-       print('Wybieram numer +48', self.phone, 'i dzwonię do', self.first_name, self.last_name, end=' ')
+       print('Wybieram numer +48', self.company_number, 'i dzwonię do', self.first_name, self.last_name, end=' ')
    @property
    def label_length(self):
        wynik = len(self.first_name) + len(self.last_name)
@@ -33,10 +33,10 @@ Lp1 = BaseContact(first_name = fake.first_name(),last_name = fake.last_name(),ph
 Lp2 = BaseContact(first_name = fake.first_name(),last_name = fake.last_name(),phone = fake.phone_number(),email = fake.email)
 Lp3 = BaseContact(first_name = fake.first_name(),last_name = fake.last_name(),phone = fake.phone_number(),email = fake.email)
 Lp4 = BaseContact(first_name = fake.first_name(),last_name = fake.last_name(),phone = fake.phone_number(),email = fake.email)
-Lp5 = BusinessContact(first_name = fake.first_name(),last_name = fake.last_name(),phone = fake.phone_number(),email = fake.email(),position = 'President',company_name = 'Żabka',company_number = fake.phone_number)
-Lp6 = BusinessContact(first_name = fake.first_name(),last_name = fake.last_name(),phone = fake.phone_number(),email = fake.email(),position = 'President',company_name = 'Żabka',company_number = fake.phone_number)
-Lp7 = BusinessContact(first_name = fake.first_name(),last_name = fake.last_name(),phone = fake.phone_number(),email = fake.email(),position = 'President',company_name = 'Żabka',company_number = fake.phone_number)
-Lp8 = BusinessContact(first_name = fake.first_name(),last_name = fake.last_name(),phone = fake.phone_number(),email = fake.email(),position = 'President',company_name = 'Żabka',company_number = fake.phone_number)
+Lp5 = BusinessContact(first_name = fake.first_name(),last_name = fake.last_name(),phone = fake.phone_number(),email = fake.email(),position = 'President',company_name = 'Żabka',company_number = fake.phone_number())
+Lp6 = BusinessContact(first_name = fake.first_name(),last_name = fake.last_name(),phone = fake.phone_number(),email = fake.email(),position = 'President',company_name = 'Żabka',company_number = fake.phone_number())
+Lp7 = BusinessContact(first_name = fake.first_name(),last_name = fake.last_name(),phone = fake.phone_number(),email = fake.email(),position = 'President',company_name = 'Żabka',company_number = fake.phone_number())
+Lp8 = BusinessContact(first_name = fake.first_name(),last_name = fake.last_name(),phone = fake.phone_number(),email = fake.email(),position = 'President',company_name = 'Żabka',company_number = fake.phone_number())
 
 kontakty = (Lp1,Lp2,Lp3,Lp4,Lp5,Lp6,Lp7,Lp8)
 print()
