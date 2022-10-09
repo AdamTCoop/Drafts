@@ -1,7 +1,4 @@
 import time
-import random
-
-print(seed([x]))
 
 class Movies:
     def __init__(self, title, year, type, lenght):
@@ -16,6 +13,8 @@ class Movies:
     def play(self):
         print('Ogladasz wlasnie: %s z roku %s. Dotychczas ten film obejrzano %s razy.' % (self.title,self.year,self.views))
         self.views += 1
+    def show(self):
+        print('Wylosowano film: %s z roku %s. Dotychczas ten film obejrzano %s razy.' % (self.title,self.year,self.views))
 class Series(Movies):
    def __init__(self, ep_number, se_number, *args, **kwargs):
        super().__init__(*args, **kwargs)
@@ -26,6 +25,9 @@ class Series(Movies):
    def play(self):
        print('Ogladasz wlasnie: %s z roku %s S%sE%s. Dotychczas ten odcinek obejrzano %i razy.' % (self.title,self.year,self.se_number,self.ep_number,self.views))
        self.views += 1
+   def show(self):
+       print('Wylosowano film: %s z roku %s. Dotychczas ten film obejrzano %s razy.' % (self.title,self.year,self.views))
+
 
 Lista = [
 Movies(title = 'Tie Me Up! Tie Me Down!', year = '1990',type = 'Comedy',lenght='M'),
@@ -110,15 +112,23 @@ def search(value):
            print(x.title,x.year)
            break
 
+import random
+def generate_views():
+    x = random.randrange(10)
+    Lista[x].views = random.randrange(1,100)
+    (Lista[x].show())
+def generate_views10():
+    for x in range(10):
+        x = random.randrange(10)
+        Lista[x].views = random.randrange(1, 100)
+        (Lista[x].show())
+def top_views():
+    top_view = (0)
+    for x in Lista:
+        if top_view < Lista[x].views:
+            top_view = Lista[x].views
 
-
-
-
-
-
-
-
-
+top_views()
 """
 time.sleep(1)
 print('|. Wczytywanie modułu.. 1/3...........|')
