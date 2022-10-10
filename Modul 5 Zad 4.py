@@ -23,6 +23,7 @@ class Series(Movies):
        self.views += 1
    def show(self):
        print('Wylosowano film: %s z roku %s. Dotychczas ten film obejrzano %s razy.' % (self.title,self.year,self.views))
+
 Lista = [
 Movies(title = 'Tie Me Up! Tie Me Down!', year = '1990',type = 'Comedy',lenght='M'),
 Movies(title = 'High Heels', year = '1991',type = 'Comedy',lenght='M'),
@@ -75,6 +76,7 @@ Series(title = 'The Office', year = '2010',type = 'Comedy',se_number = '03', ep_
 Series(title = 'The Office', year = '2010',type = 'Comedy',se_number = '03', ep_number = '02',lenght='S'),
 Series(title = 'The Office', year = '2010',type = 'Comedy',se_number = '03', ep_number = '03',lenght='S'),
 ]
+
 Lista_alfa = sorted(Lista, key=lambda self: self.title)
 Lista_year = sorted(Lista, key=lambda self: self.year)
 import time
@@ -104,15 +106,22 @@ def generate_views10():
         x = random.randrange(10)
         Lista[x].views = random.randrange(1, 100)
         (Lista[x].show())
-def top_views():
-    top_view = (0)
+def top_titles():
+    top_view = 1
+    top_title = ()
     for x in Lista:
-        if top_view < Lista[x].views:
-            top_view = Lista[x].views
+        cur_view = x.views
+        if top_view < cur_view:
+            top_view = cur_view
+            top_title = x.title
+    return print('Największy przebój to %s i został obejrzany %s razy.' % (top_title,top_view))
 
 get_movies()
 print()
 get_series()
 print()
+generate_views()
+print()
 generate_views10()
 print()
+top_titles()
