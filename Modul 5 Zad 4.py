@@ -75,31 +75,18 @@ Series(title = 'The Office', year = '2010',type = 'Comedy',se_number = '03', ep_
 Series(title = 'The Office', year = '2010',type = 'Comedy',se_number = '03', ep_number = '02',lenght='S'),
 Series(title = 'The Office', year = '2010',type = 'Comedy',se_number = '03', ep_number = '03',lenght='S'),
 ]
+Lista_alfa = sorted(Lista, key=lambda self: self.title)
+Lista_year = sorted(Lista, key=lambda self: self.year)
 import time
 import random
-
 def get_series():
-    time.sleep(1)
-    print('Wczytywanie danych.')
-    time.sleep(2)
-    print('Wczytywanie zakończone.')
-    time.sleep(2)
-    print('W bibliotece dostepne sa nastepujace pozycje:\n')
-    time.sleep(2)
-    for x in Lista:
+    for x in Lista_alfa:
         try:
             print('Tytul: %s, Rok %s, Sezon %s, Odcinek %s' % (x.title,x.year,x.se_number,x.ep_number))
         except AttributeError:
             continue
 def get_movies():
-    time.sleep(1)
-    print('Wczytywanie danych.')
-    time.sleep(2)
-    print('Wczytywanie zakończone.')
-    time.sleep(2)
-    print('W bibliotece dostepne sa nastepujace pozycje:\n')
-    time.sleep(2)
-    for x in Lista:
+    for x in Lista_year:
         if x.lenght == 'M':
             print('Tytul: %s, Rok %s' % (x.title,x.year))
 def search(value):
@@ -123,32 +110,9 @@ def top_views():
         if top_view < Lista[x].views:
             top_view = Lista[x].views
 
-time.sleep(1)
-print('|. Wczytywanie modułu.. 1/3...........|')
-time.sleep(2)
-print('|. Wczytywanie modułu.. 2/3...........|')
-time.sleep(2)
-print('|. Wczytywanie modułu.. 3/3...........|')
-time.sleep(2)
-print("|. Moduł wczytano: Biblioteka filmów..| \nVAULT TEC Inc \nRok dystrybucji 2152")
-time.sleep(1)
+get_movies()
 print()
-print(
-    ' ______ Dostępne funkcje programu_________\n',
-    '|. 1. Pobranie bazy filmów - get_movies()\n',
-    '|. 2. Pobranie bazy seriali - get_series()\n',
-    '|. 3. Wyszukanie po tytule filmu - search()\n',
-    '|. 4. Wylosowanie 1 tytulu z losową ogladalnoscią - generate_views()\n',
-    '|. 5. Wylosowanie 10 tytulow z losową ogladalnoscią filmu - generate_views10()\n'
-    ' |. 6. Wskazanie tytulu z najwyzsza ogladalnoscia - top_views()\n')
-n = int(input())
-if n == 1:
-    get_movies()
-elif n == 2:
-    get_series()
-elif n == 3:
-    search(input())
-elif n == 4:
-    generate_views()
-elif n == 5:
-    generate_views10()
+get_series()
+print()
+generate_views10()
+print()
