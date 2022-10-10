@@ -97,7 +97,6 @@ def search(value):
        if x.title == value:
            print(x.title,x.year)
            break
-
 def generate_views():
     x = random.randrange(10)
     Lista[x].views = random.randrange(1,100)
@@ -131,39 +130,40 @@ def top_titles():
             top_title3 = x.title
     return print('\n1. %s, z iloścą wyświeteń: %s. \n2. %s, z ilością wyświetleń %s. \n3. %s, z ilością wyświetleń z %s' % (top_title,top_view, top_title2,top_view2, top_title3,top_view3))
 
+def dodaj_1():
+        Lista_alfa.append(Series(title=(input('Wprowadz tytul filmu:')), year=(input('Wprowadz rok produkcji filmu:')), type=(input('Wprowadz gatunek filmu:')), se_number=(input('Wprowadz sezon filmu:')), ep_number=(input('Wprowadz numer odcinka:')), lenght=(input('Wprowadz typ filmu (M-Movie,S-Series'))))
 
 
-time.sleep(1)
-print('|-------------------------------------|')
-print('|. Wczytywanie modułu.. 1/3...........|')
-time.sleep(2)
-print('|. Wczytywanie modułu.. 2/3...........|')
-time.sleep(2)
-print('|. Wczytywanie modułu.. 3/3...........|')
-time.sleep(2)
-print("|. Moduł 'Biblioteka filmów' wczytano.| \n"
-      "|.___________VAULT TEC Inc___________.| \n"
-      "|._______Rok dystrybucji 2152________.| \n"
-      "|.___________________________________.| \n")
-time.sleep(1)
-print()
-print(
-    ' |______ Dostępne funkcje programu______________________|\n',
-    '|. 1. Pobranie bazy filmów - get_movies()______________|\n',
-    '|. 2. Pobranie bazy serialów - get_series()____________|\n',
-    '|. 3. Wyszukanie po tytule filmu - search()____________|\n',
-    '|. 4. Pobranie 1 tytulu - generate_views()_____________|\n',
-    '|. 5. Pobranie 10 tytulow - generate_views10()_________|\n',
-    '|. 6. Lokalny BoxOffice - top_views()__________________|\n'
-    ' |------------------------------------------------------|')
+def dodaj_few():
+    ile = int(input('Ile odcinków danego serialu chcesz dodać?'))
+    in_tytul = (input('Wprowadz tytul filmu:'))
+    in_rok = (input('Wprowadz rok filmu:'))
+    in_kat = (input('Wprowadz kategorie filmu:'))
+    in_sezon = (input('Wprowadz sezon filmu:'))
+    in_typ = (input('Wprowadz typ filmu:'))
+    for x in range(ile):
+        y = x+1
+        Lista_alfa.append(Series(title = (in_tytul), year=(in_rok), type=(in_kat), se_number=(in_sezon), ep_number=(y), lenght=(in_typ)))
+    get_series()
 
 while True:
     try:
+        print()
+        print(
+            ' |______ Dostępne funkcje programu______________________|\n',
+            '|. 1. Pobranie bazy filmów - get_movies()______________|\n',
+            '|. 2. Pobranie bazy serialów - get_series()____________|\n',
+            '|. 3. Wyszukanie po tytule filmu - search()____________|\n',
+            '|. 4. Pobranie 1 tytulu - generate_views()_____________|\n',
+            '|. 5. Pobranie 10 tytulow - generate_views10()_________|\n',
+            '|. 6. Lokalny BoxOffice - top_views()__________________|\n'
+            ' |. 7. Chcesz dodać seriale? Śmiało!____________________|\n'
+            ' |------------------------------------------------------|')
         n = int(input('\nWprowadź numer polecenia jakie ma zostać wykonane:\n'))
     except ValueError:
         print('Możesz wprowadzić tylko wartości liczbowe od 1 do 6. Spróbuj jeszcze raz.')
         continue
-    if n < 1 or n > 7:
+    if n < 1 or n > 8:
         print('Możesz wprowadzić tylko wartości liczbowe od 1 do 6. Spróbuj jeszcze raz.')
         continue
     elif n == 1:
@@ -183,6 +183,9 @@ while True:
         continue
     elif n == 6:
         top_titles()
+        continue
+    elif n == 7:
+        dodaj_few()
         continue
     else:
         break
