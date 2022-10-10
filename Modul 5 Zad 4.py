@@ -131,16 +131,58 @@ def top_titles():
             top_title3 = x.title
     return print('\n1. %s, z iloścą wyświeteń: %s. \n2. %s, z ilością wyświetleń %s. \n3. %s, z ilością wyświetleń z %s' % (top_title,top_view, top_title2,top_view2, top_title3,top_view3))
 
+
+
+time.sleep(1)
+print('|-------------------------------------|')
+print('|. Wczytywanie modułu.. 1/3...........|')
+time.sleep(2)
+print('|. Wczytywanie modułu.. 2/3...........|')
+time.sleep(2)
+print('|. Wczytywanie modułu.. 3/3...........|')
+time.sleep(2)
+print("|. Moduł 'Biblioteka filmów' wczytano.| \n"
+      "|.___________VAULT TEC Inc___________.| \n"
+      "|._______Rok dystrybucji 2152________.| \n"
+      "|.___________________________________.| \n")
+time.sleep(1)
 print()
-print('Biblioteka filmów 2022:\n\nFilmy:\n')
-get_movies()
-print('\nSeriale:\n')
-get_series()
-print()
-generate_views()
-print()
-generate_views10()
-print()
-x = time.strftime("%Y-%m-%d", time.localtime())
-print('Najpopularniejsze filmy i seriale na dzień %s to' % (x)), top_titles()
-print()
+print(
+    ' |______ Dostępne funkcje programu______________________|\n',
+    '|. 1. Pobranie bazy filmów - get_movies()______________|\n',
+    '|. 2. Pobranie bazy serialów - get_series()____________|\n',
+    '|. 3. Wyszukanie po tytule filmu - search()____________|\n',
+    '|. 4. Pobranie 1 tytulu - generate_views()_____________|\n',
+    '|. 5. Pobranie 10 tytulow - generate_views10()_________|\n',
+    '|. 6. Lokalny BoxOffice - top_views()__________________|\n'
+    ' |------------------------------------------------------|')
+
+while True:
+    try:
+        n = int(input('\nWprowadź numer polecenia jakie ma zostać wykonane:\n'))
+    except ValueError:
+        print('Możesz wprowadzić tylko wartości liczbowe od 1 do 6. Spróbuj jeszcze raz.')
+        continue
+    if n < 1 or n > 7:
+        print('Możesz wprowadzić tylko wartości liczbowe od 1 do 6. Spróbuj jeszcze raz.')
+        continue
+    elif n == 1:
+        get_movies()
+        continue
+    elif n == 2:
+        get_series()
+        continue
+    elif n == 3:
+        search(input())
+        continue
+    elif n == 4:
+        generate_views()
+        continue
+    elif n == 5:
+        generate_views10()
+        continue
+    elif n == 6:
+        top_titles()
+        continue
+    else:
+        break
