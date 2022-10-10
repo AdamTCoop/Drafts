@@ -81,6 +81,7 @@ Lista_alfa = sorted(Lista, key=lambda self: self.title)
 Lista_year = sorted(Lista, key=lambda self: self.year)
 import time
 import random
+import datetime
 def get_series():
     for x in Lista_alfa:
         try:
@@ -108,20 +109,38 @@ def generate_views10():
         (Lista[x].show())
 def top_titles():
     top_view = 1
+    top_view2 = 1
+    top_view3 = 1
     top_title = ()
+    top_title2 = ()
+    top_title3 = ()
     for x in Lista:
         cur_view = x.views
         if top_view < cur_view:
             top_view = cur_view
             top_title = x.title
-    return print('Największy przebój to %s i został obejrzany %s razy.' % (top_title,top_view))
+    for x in Lista:
+        cur_view = x.views
+        if top_view2 < cur_view < top_view:
+            top_view2 = cur_view
+            top_title2 = x.title
+    for x in Lista:
+        cur_view = x.views
+        if top_view3 < cur_view < top_view2:
+            top_view3 = cur_view
+            top_title3 = x.title
+    return print('\n1. %s, z iloścą wyświeteń: %s. \n2. %s, z ilością wyświetleń %s. \n3. %s, z ilością wyświetleń z %s' % (top_title,top_view, top_title2,top_view2, top_title3,top_view3))
 
-get_movies()
 print()
+print('Biblioteka filmów 2022:\n\nFilmy:\n')
+get_movies()
+print('\nSeriale:\n')
 get_series()
 print()
 generate_views()
 print()
 generate_views10()
 print()
-top_titles()
+x = time.strftime("%Y-%m-%d", time.localtime())
+print('Najpopularniejsze filmy i seriale na dzień %s to' % (x)), top_titles()
+print()
