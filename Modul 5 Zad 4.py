@@ -140,10 +140,9 @@ def dodaj_few():
     in_rok = (input('Wprowadz rok filmu:'))
     in_kat = (input('Wprowadz kategorie filmu:'))
     in_sezon = (input('Wprowadz sezon filmu:'))
-    in_typ = (input('Wprowadz typ filmu:'))
     for x in range(ile):
         y = x+1
-        Lista_alfa.append(Series(title = (in_tytul), year=(in_rok), type=(in_kat), se_number=(in_sezon), ep_number=(y), lenght=(in_typ)))
+        Lista_alfa.append(Series(title = (in_tytul), year=(in_rok), type=(in_kat), se_number=(in_sezon), ep_number=(y), lenght=('S')))
     get_series()
 
 while True:
