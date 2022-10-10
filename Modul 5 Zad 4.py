@@ -172,6 +172,7 @@ while True:
         get_series()
         continue
     elif n == 3:
+        print('Wprowadz tytul filmu. Brak wyniku oznacza brak filmu.')
         search(input())
         continue
     elif n == 4:
