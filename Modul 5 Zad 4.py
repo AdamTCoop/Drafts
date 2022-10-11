@@ -157,7 +157,9 @@ while True:
     try:
         print()
         print(
-            ' |______ Dostępne funkcje programu______________________|\n',
+            ' |------------------------------------------------------|\n',
+            '| *** Dostępne funkcje programu_BIBLIOTEKA FILMOWA *** |\n',
+            '|------------------------------------------------------|\n',
             '|. 1. Pobranie bazy filmów - get_movies()______________|\n',
             '|. 2. Pobranie bazy serialów - get_series()____________|\n',
             '|. 3. Wyszukanie po tytule filmu - search()____________|\n',
