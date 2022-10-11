@@ -93,10 +93,18 @@ def get_movies():
         if x.lenght == 'M':
             print('Tytul: %s, Rok %s' % (x.title,x.year))
 def search(value):
-   for x in Lista:
-       if x.title == value:
-           print(x.title,x.year)
-           break
+    test = 0
+    end = '\nWyszukiwanie zakończono.'
+    while True:
+        for x in Lista:
+            if x.title == value:
+                print('Znaleziono pozycje:',x.title,x.year)
+                x.flag = 1
+                test += 1
+                break
+        if test == 0:
+            print('Wskazanego tytułu nie ma w bazie.')
+        return end
 def generate_views():
     x = random.randrange(10)
     Lista[x].views = random.randrange(1,100)
@@ -172,7 +180,7 @@ while True:
         get_series()
         continue
     elif n == 3:
-        print('Wprowadz tytul filmu. Brak wyniku oznacza brak filmu.')
+        print('Wprowadz tytul szukanego filmu:')
         search(input())
         continue
     elif n == 4:
@@ -189,3 +197,5 @@ while True:
         continue
     else:
         break
+
+
