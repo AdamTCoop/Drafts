@@ -94,7 +94,7 @@ def get_movies():
             print('Tytul: %s, Rok %s' % (x.title,x.year))
 def watch(value):
     test = 0
-    end = '\nProjekcie zakończono.'
+    end = '\nProjekcje zakończono.'
     while True:
         for x in Lista:
             if x.title == value:
